@@ -1,3 +1,9 @@
+/*
+    LOPEZ, LUIS ENRICO D.
+    RIVERA, LOUIE IV Y.
+    SWDESPA S17
+*/
+
 import java.util.Scanner;
 
 interface Computor{
@@ -47,17 +53,13 @@ class ExpressionParser{
     {
         //placing space between every character
         raw = raw.replace("", " ");
-        System.out.println(raw);
         //removing extra space between numbers joined by decimal point
         raw = raw.replaceAll("[\\.][\\s]", ".");
         raw = raw.replaceAll("[\\s][\\.]", ".");
-        System.out.println(raw);
         //removing extra space between digits of a number
         raw = raw.replaceAll("([0-9])([\\s])([0-9])", "$1$3");
-        System.out.println(raw);
         //removing extra space on the sides
         raw = raw.trim();
-        System.out.println(raw);
         //split expression into 3 strings using whitespace as splitter
         return raw.split("\\s+", 3);
     }
@@ -77,10 +79,11 @@ class Calculator{
 			if(!expression.equals(Symbols.EXIT.toString()))
 			{
                 parsedExpression = parser.parse(expression);
-                System.out.println(parsedExpression[0]);
-                System.out.println(parsedExpression[1]);
-                System.out.println(parsedExpression[2]);
-				printResult(Float.parseFloat(parsedExpression[0]), Float.parseFloat(parsedExpression[2]), findComputor(parsedExpression[1]));
+                try {
+                    printResult(Float.parseFloat(parsedExpression[0]), Float.parseFloat(parsedExpression[2]), findComputor(parsedExpression[1]));
+                } catch (Exception e) {
+                    System.out.println("ERROR: Invalid Expression");
+                }
 			}
 				
 		}while(!expression.equals(Symbols.EXIT.toString()));

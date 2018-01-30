@@ -1,3 +1,9 @@
+/*
+    LOPEZ, LUIS ENRICO D.
+    RIVERA, LOUIE IV Y.
+    SWDESPA S17
+*/
+
 public enum Symbols{
 	
 	ADD,SUB,MULT,DIV,EXIT;
